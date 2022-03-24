@@ -1,13 +1,29 @@
-import express, { Application, Request, Response } from 'express'
+import express, { Application, Request, Response } from "express";
 
-const app: Application = express()
+const schedule = require("node-schedule");
+const connectDB = require("./db/db");
+const port = process.env.PORT || 5000;
+const app: Application = express();
+const dotenv = require("dotenv");
 
-const port: number = 3001
+dotenv.config();
 
-app.get('/toto', (req: Request, res: Response) => {
-    res.send('Hello toto')
-})
+connectDB();
 
-app.listen(port, function () {
-    console.log(`App is listening on port ${port} !`)
-})
+const rule = new schedule.RecurrenceRule();
+
+rule.seconds = 0;
+
+const job = schedule.scheduleJob(rule, function () {
+  console.log("The answer to life, the universe, and everything!");
+});
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Hello world");
+});
+
+app.get("/search", (req: Request, res: Response) => {
+  res.send();
+});
+
+app.listen(port, () => console.log(`App is listening on port ${port} !`));

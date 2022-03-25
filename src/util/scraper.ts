@@ -1,5 +1,5 @@
 const axios = require("axios").default;
-const cheerio = require("cheerio");
+import cheerio from "cheerio";
 
 const Scraper = (): number => {
   const website: string = "https://kream.co.kr/search";

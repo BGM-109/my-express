@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 const asyncHandler = require("express-async-handler");
 
-const Price = require("../models/priceModel");
+const Price = require("../model/priceModel");
 
 // @desc    Get prices
 // @route   GET /api/prices

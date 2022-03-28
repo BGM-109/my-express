@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 
 const priceSchema = mongoose.Schema(
   {
-    text: {
-      type: String,
-      require: [true, "Plz add text"],
+    price: {
+      type: Number,
+      require: true,
     },
   },
   {
-    timestamp: true,
+    timestamps: true,
   }
 );
 
